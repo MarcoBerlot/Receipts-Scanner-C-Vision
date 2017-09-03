@@ -11,12 +11,12 @@ import io.dropwizard.jersey.sessions.Session;
 // it must be annotated with at least @Path
 @Path("")
 @Produces(MediaType.APPLICATION_JSON)
-public class HelloWorldController {
+public class TagController {
 
     // You can specify additional @Path steps; they will be relative
     // to the @Path defined at the class level
     @GET
-    @Path("/hello")
+    @Path("/hello1")
     public String helloWorld(@Session HttpSession session) {
         return "Hello World " + session.toString();
     }
