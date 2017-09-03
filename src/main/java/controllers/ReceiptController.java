@@ -37,8 +37,8 @@ public class ReceiptController {
     }
     @PUT
     @Path("/tags/{tag}")
-    public String toggleTag(@PathParam("tag") String tagName,@Valid @NotNull CreateTagRequest tagRequest) {
-        receipts.insert_tag(tagName,tagRequest.receipt_id);
+    public String toggleTag(@PathParam("tag") String tagName,int id) {
+        receipts.insert_tag(tagName,id);
         return tagName;
     }
     @GET

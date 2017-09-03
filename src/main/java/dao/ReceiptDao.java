@@ -35,15 +35,25 @@ public class ReceiptDao {
 
         return receiptsRecord.getId();
     }
-    public int insert_tag(String tag, int id) {
-        ReceiptTagRecord receiptTagRecord = dsl
-                .insertInto(RECEIPT_TAG, RECEIPT_TAG.RECEIPT_ID, RECEIPT_TAG.TAG)
+    public void insert_tag(String tag, int id) {
+        ReceiptTagRecord existingTag = dsl
+                .selectFrom(RECEIPT_TAG)
+                .where(RECEIPT_TAG.TAG.equal(tag).and(RECEIPT_TAG.RECEIPT_ID.equal(id)))
+                .fetchAny();
+        if(existingTag==null){
+               dsl .insertInto(RECEIPT_TAG, RECEIPT_TAG.RECEIPT_ID, RECEIPT_TAG.TAG)
                 .values(id, tag)
                 .returning(RECEIPTS.ID)
                 .fetchOne();
+        }else{
+            dsl.delete(RECEIPT_TAG)
+                    .where(RECEIPT_TAG.TAG.equal(tag).and(RECEIPT_TAG.RECEIPT_ID.equal(id)))
+                    .execute();
+
+        }
 
 
-        return 2;
+        return ;
     }
 
     public List<ReceiptsRecord> getAllReceipts() {
