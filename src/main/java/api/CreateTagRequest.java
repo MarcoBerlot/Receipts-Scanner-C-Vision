@@ -13,9 +13,7 @@ import java.math.BigDecimal;
  * and example.
  */
 public class CreateTagRequest {
-    @NotEmpty
-    public String tag;
-    public int receipt_id;
+    public Integer receipt_id;
 
 
 }
