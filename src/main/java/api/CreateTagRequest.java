@@ -2,6 +2,7 @@ package api;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
  * and example.
  */
 public class CreateTagRequest {
+    @NotNull
     public Integer receipt_id;
-
 
 }

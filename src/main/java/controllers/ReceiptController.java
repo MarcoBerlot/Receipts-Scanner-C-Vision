@@ -37,7 +37,7 @@ public class ReceiptController {
     }
     @PUT
     @Path("/tags/{tag}")
-    public String toggleTag(@PathParam("tag") String tagName,int id) {
+    public String toggleTag(@PathParam("tag") String tagName,@Valid @NotNull Integer id) {
         receipts.insert_tag(tagName,id);
         return tagName;
     }

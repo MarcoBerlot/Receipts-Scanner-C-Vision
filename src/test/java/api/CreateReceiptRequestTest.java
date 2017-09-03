@@ -3,7 +3,6 @@ package api;
 
 import io.dropwizard.jersey.validation.Validators;
 import org.junit.Test;
-
 import javax.validation.Validator;
 import java.math.BigDecimal;
 
@@ -19,9 +18,8 @@ public class CreateReceiptRequestTest {
     public void testValid() {
         CreateReceiptRequest receipt = new CreateReceiptRequest();
         receipt.merchant = "OK";
-
         receipt.amount = new BigDecimal(33.44);
-        assertThat(validator.validate(receipt), empty());
+        assertThat(validator.validate(receipt),empty());
     }
 
     @Test
@@ -41,4 +39,11 @@ public class CreateReceiptRequestTest {
         validator.validate(receipt);
         assertThat(validator.validate(receipt), hasSize(1));
     }
+    @Test
+    public void testNullReceipt() {
+        CreateReceiptRequest receipt = new CreateReceiptRequest();
+        validator.validate(receipt);
+        assertThat(validator.validate(receipt), hasSize(1));
+    }
+
 }
