@@ -35,18 +35,8 @@ public class ReceiptController {
         List<ReceiptsRecord> receiptRecords = receipts.getAllReceipts();
         return receiptRecords.stream().map(ReceiptResponse::new).collect(toList());
     }
-    @PUT
-    @Path("/tags/{tag}")
-    public String toggleTag(@PathParam("tag") String tagName,@Valid @NotNull Integer id) {
-        receipts.insert_tag(tagName,id);
-        return tagName;
-    }
-    @GET
-    @Path("/tags/")
-    public List<ReceiptResponse> getTaggedReceipts() {
-        List<ReceiptsRecord> receiptTagRecords = receipts.getAllTags();
-        return receiptTagRecords.stream().map(ReceiptResponse::new).collect(toList());
-    }
+
+    
 
 
 }
