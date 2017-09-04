@@ -59,11 +59,12 @@ public class ReceiptDao {
     public List<ReceiptsRecord> getAllReceipts() {
         return dsl.selectFrom(RECEIPTS).fetch();
     }
-    public List<ReceiptsRecord> getAllTags() {
+    public List<ReceiptsRecord> getAllTags(String tag) {
      return dsl .selectDistinct()
                 .from(RECEIPTS)
                 .rightOuterJoin(RECEIPT_TAG)
                 .on(RECEIPT_TAG.RECEIPT_ID.equal(RECEIPTS.ID))
+                .where(RECEIPT_TAG.TAG.equal(tag))
                 .fetchInto(RECEIPTS);
     }
 
