@@ -1,5 +1,6 @@
 import controllers.ReceiptController;
 import controllers.StaticHtmlController;
+import controllers.TagController;
 import dao.ReceiptDao;
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
